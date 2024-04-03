@@ -22,9 +22,9 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => '',
-            'slug' => '',
-            'content' => '',
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:posts,slug,' . $this->post->id . '|alpha_dash|max:255',
+            'content' => 'required',
         ];
     }
 }
