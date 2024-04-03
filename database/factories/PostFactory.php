@@ -17,7 +17,12 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->sentence,
+            'slug' => fake()->unique()->slug,
+            'content' => fake()->paragraphs(3, true),
+            'user_id' => function () {
+                return \App\Models\User::factory()->create()->id;
+            },
         ];
     }
 }
