@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\Pages\BlogPageController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BlogPageController::class, 'index'])->name('blog.index');
+Route::get('/post/{slug}', [BlogPageController::class, 'post'])->name('blog.post');
+
+Route::get('posts/{slug}/preview', 'PostController@preview')->name('posts.preview');
+
 
 Auth::routes();
 
