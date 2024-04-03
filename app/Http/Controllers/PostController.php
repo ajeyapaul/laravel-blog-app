@@ -41,7 +41,7 @@ class PostController extends Controller
 
         $post = auth()->user()->posts()->create($validatedData);
 
-        return redirect()->route('posts.show', $post->id)
+        return redirect()->route('posts.index')
             ->with('success', 'Post created successfully');
     }
 
